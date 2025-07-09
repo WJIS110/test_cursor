@@ -29,7 +29,7 @@ class State:
 # Styling
 CONTAINER_STYLE = me.Style(
     max_width="800px",
-    margin=me.Margin.symmetric(horizontal="auto", vertical=20),
+    margin=me.Margin(top=20, bottom=20, left="auto", right="auto"),
     padding=me.Padding.all(20),
     background="white",
     border_radius=8,
@@ -63,7 +63,7 @@ INPUT_STYLE = me.Style(
 ADD_BUTTON_STYLE = me.Style(
     background="#10b981",
     color="white",
-    padding=me.Padding.symmetric(horizontal=20, vertical=12),
+    padding=me.Padding(top=12, bottom=12, left=20, right=20),
     border="none",
     border_radius=6,
     font_size="16px",
@@ -117,7 +117,7 @@ CHECKBOX_STYLE = me.Style(
 DELETE_BUTTON_STYLE = me.Style(
     background="#ef4444",
     color="white",
-    padding=me.Padding.symmetric(horizontal=12, vertical=6),
+    padding=me.Padding(top=6, bottom=6, left=12, right=12),
     border="none",
     border_radius=4,
     font_size="14px",
@@ -238,7 +238,7 @@ def todo_stats(todos: List[Todo]):
                 style=me.Style(
                     background="#6366f1",
                     color="white",
-                    padding=me.Padding.symmetric(horizontal=12, vertical=6),
+                    padding=me.Padding(top=6, bottom=6, left=12, right=12),
                     border="none",
                     border_radius=4,
                     font_size="12px",

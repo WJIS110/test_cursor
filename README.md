@@ -208,6 +208,11 @@ Key benefits:
 - This was fixed in the current version. Mesop applications should be run using the `mesop` CLI command, not `me.run()`.
 - Use: `mesop main.py` instead of `python main.py`
 
+**'str' object has no attribute 'top'**
+- This was a styling syntax issue that has been fixed. 
+- Caused by incorrect usage of `me.Margin.symmetric()` and `me.Padding.symmetric()`
+- Fixed by using explicit margin/padding definitions: `me.Margin(top=20, bottom=20, left="auto", right="auto")`
+
 **Port already in use**
 - If you see "Address already in use" error, another Mesop application is already running.
 - Kill existing processes: `pkill -f mesop`
