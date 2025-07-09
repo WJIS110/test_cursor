@@ -94,6 +94,14 @@ python verify.py
 
 This script will check that both applications can be imported and that all components are working properly.
 
+To test that all styling definitions work correctly:
+
+```bash
+python test_styles.py
+```
+
+This script verifies that all Mesop styling objects (margins, padding, borders) are properly defined without syntax errors.
+
 ## Project Structure
 
 ```
@@ -101,6 +109,7 @@ mesop-todo-list/
 ├── main.py              # Main application file
 ├── demo.py              # Demo version with sample data
 ├── verify.py            # Verification script
+├── test_styles.py       # Style testing script
 ├── run.sh               # Convenient run script
 ├── requirements.txt     # Python dependencies
 ├── venv/                # Virtual environment (created after setup)
@@ -210,8 +219,9 @@ Key benefits:
 
 **'str' object has no attribute 'top'**
 - This was a styling syntax issue that has been fixed. 
-- Caused by incorrect usage of `me.Margin.symmetric()` and `me.Padding.symmetric()`
+- Caused by incorrect usage of `me.Margin.symmetric()` and `me.Padding.symmetric()`, and string border definitions
 - Fixed by using explicit margin/padding definitions: `me.Margin(top=20, bottom=20, left="auto", right="auto")`
+- Fixed border definitions: Use `me.Border.all(me.BorderSide(width=1, color="#e5e7eb", style="solid"))` instead of `border="1px solid #e5e7eb"`
 
 **Port already in use**
 - If you see "Address already in use" error, another Mesop application is already running.

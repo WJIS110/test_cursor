@@ -54,7 +54,7 @@ INPUT_CONTAINER_STYLE = me.Style(
 INPUT_STYLE = me.Style(
     flex="1",
     padding=me.Padding.all(12),
-    border="2px solid #e5e7eb",
+    border=me.Border.all(me.BorderSide(width=2, color="#e5e7eb", style="solid")),
     border_radius=6,
     font_size="16px",
     outline="none"
@@ -64,7 +64,7 @@ ADD_BUTTON_STYLE = me.Style(
     background="#10b981",
     color="white",
     padding=me.Padding(top=12, bottom=12, left=20, right=20),
-    border="none",
+    border=me.Border.all(me.BorderSide(width=0, color="transparent", style="none")),
     border_radius=6,
     font_size="16px",
     font_weight="500",
@@ -77,7 +77,7 @@ TODO_ITEM_STYLE = me.Style(
     align_items="center",
     gap="12px",
     padding=me.Padding.all(16),
-    border="1px solid #e5e7eb",
+    border=me.Border.all(me.BorderSide(width=1, color="#e5e7eb", style="solid")),
     border_radius=6,
     margin=me.Margin(bottom=8),
     background="#fafafa"
@@ -88,7 +88,7 @@ TODO_ITEM_COMPLETED_STYLE = me.Style(
     align_items="center",
     gap="12px",
     padding=me.Padding.all(16),
-    border="1px solid #e5e7eb",
+    border=me.Border.all(me.BorderSide(width=1, color="#e5e7eb", style="solid")),
     border_radius=6,
     margin=me.Margin(bottom=8),
     background="#f0f9ff",
@@ -118,7 +118,7 @@ DELETE_BUTTON_STYLE = me.Style(
     background="#ef4444",
     color="white",
     padding=me.Padding(top=6, bottom=6, left=12, right=12),
-    border="none",
+    border=me.Border.all(me.BorderSide(width=0, color="transparent", style="none")),
     border_radius=4,
     font_size="14px",
     cursor="pointer",
@@ -152,7 +152,7 @@ DEMO_BANNER_STYLE = me.Style(
     margin=me.Margin(bottom=20),
     text_align="center",
     font_size="14px",
-    border="1px solid #fcd34d"
+    border=me.Border.all(me.BorderSide(width=1, color="#fcd34d", style="solid"))
 )
 
 
@@ -239,7 +239,7 @@ def todo_stats(todos: List[Todo]):
                     background="#6366f1",
                     color="white",
                     padding=me.Padding(top=6, bottom=6, left=12, right=12),
-                    border="none",
+                    border=me.Border.all(me.BorderSide(width=0, color="transparent", style="none")),
                     border_radius=4,
                     font_size="12px",
                     cursor="pointer"
