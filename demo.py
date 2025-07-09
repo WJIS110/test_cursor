@@ -290,5 +290,5 @@ def demo():
                 me.text("🎉 All done! Add a new todo above to get started.")
 
 
-if __name__ == "__main__":
-    me.run(demo)
+# Note: Run this app with: mesop demo.py
+# The demo() function will be automatically discovered by Mesop

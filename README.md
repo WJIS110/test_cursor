@@ -57,16 +57,19 @@ A modern, interactive todo list web application built with Google's Mesop framew
 source venv/bin/activate
 
 # Run the main application
-python main.py
+mesop main.py
 
 # Or run the demo version with sample data
-python demo.py
+mesop demo.py
 ```
 
-### Option 3: Using the Mesop CLI
+### Option 3: Alternative Mesop CLI usage
 
 ```bash
+# From the project directory
 mesop main.py
+# or
+mesop demo.py
 ```
 
 The application will be available at `http://localhost:32123` (default Mesop port).
@@ -76,10 +79,20 @@ The application will be available at `http://localhost:32123` (default Mesop por
 For a quick demonstration with sample data, run:
 
 ```bash
-python demo.py
+mesop demo.py
 ```
 
 This version comes pre-loaded with sample todos to showcase the application's functionality.
+
+## Verification
+
+To verify that both applications are working correctly:
+
+```bash
+python verify.py
+```
+
+This script will check that both applications can be imported and that all components are working properly.
 
 ## Project Structure
 
@@ -87,6 +100,7 @@ This version comes pre-loaded with sample todos to showcase the application's fu
 mesop-todo-list/
 ├── main.py              # Main application file
 ├── demo.py              # Demo version with sample data
+├── verify.py            # Verification script
 ├── run.sh               # Convenient run script
 ├── requirements.txt     # Python dependencies
 ├── venv/                # Virtual environment (created after setup)
@@ -185,6 +199,29 @@ Key benefits:
 - Type-safe development
 - Hot reload for fast iteration
 - Component-based architecture
+
+## Troubleshooting
+
+### Common Issues
+
+**AttributeError: module 'mesop' has no attribute 'run'**
+- This was fixed in the current version. Mesop applications should be run using the `mesop` CLI command, not `me.run()`.
+- Use: `mesop main.py` instead of `python main.py`
+
+**Port already in use**
+- If you see "Address already in use" error, another Mesop application is already running.
+- Kill existing processes: `pkill -f mesop`
+- Or use a different port: `mesop --port 8080 main.py`
+
+**Virtual environment issues**
+- Make sure you activated the virtual environment: `source venv/bin/activate`
+- Verify Mesop is installed: `pip list | grep mesop`
+- Reinstall if needed: `pip install -r requirements.txt`
+
+**Application not loading**
+- Check the terminal output for error messages
+- Ensure you're accessing the correct URL: `http://localhost:32123`
+- Run the verification script: `python verify.py`
 
 ---
 

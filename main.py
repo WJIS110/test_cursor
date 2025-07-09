@@ -266,5 +266,5 @@ def main():
                 me.text("🎉 No todos yet! Add one above to get started.")
 
 
-if __name__ == "__main__":
-    me.run(main)
+# Note: Run this app with: mesop main.py
+# The main() function will be automatically discovered by Mesop

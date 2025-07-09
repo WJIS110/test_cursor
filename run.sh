@@ -32,8 +32,8 @@ echo ""
 # Check for demo flag
 if [ "$1" = "demo" ]; then
     echo "🎬 Running in DEMO mode with sample data..."
-    python demo.py
+    mesop demo.py
 else
     echo "▶️  Running the main application..."
-    python main.py
+    mesop main.py
 fi
