@@ -26,13 +26,17 @@ print_error() {
 
 # Check if k6 is installed
 check_k6() {
-    if ! command -v k6 &> /dev/null; then
+    if [ -f "./bin/k6" ]; then
+        K6_CMD="./bin/k6"
+        print_status "k6 is installed locally: $(./bin/k6 version | head -1)"
+    elif command -v k6 &> /dev/null; then
+        K6_CMD="k6"
+        print_status "k6 is installed globally: $(k6 version --quiet)"
+    else
         print_error "k6 is not installed. Please install k6 first."
         echo "Visit: https://k6.io/docs/getting-started/installation/"
         exit 1
     fi
-    
-    print_status "k6 is installed: $(k6 version --quiet)"
 }
 
 # Function to run load tests
@@ -51,7 +55,7 @@ run_test() {
     print_status "Results will be saved to: ${output_dir}/${test_type}_${timestamp}"
     
     # Run k6 test with various output formats
-    k6 run \
+    $K6_CMD run \
         --out json="${output_dir}/${test_type}_${timestamp}.json" \
         --out csv="${output_dir}/${test_type}_${timestamp}.csv" \
         --summary-export="${output_dir}/${test_type}_${timestamp}_summary.json" \
@@ -80,7 +84,7 @@ run_stress_test() {
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         # Modify the realistic test to use stress configuration
-        k6 run \
+        $K6_CMD run \
             --out json="results/stress_$(date +"%Y%m%d_%H%M%S").json" \
             --env TEST_TYPE=stress \
             realistic-load-test.js
@@ -95,7 +99,7 @@ run_spike_test() {
     read -p "Are you sure you want to continue? (y/N): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        k6 run \
+        $K6_CMD run \
             --out json="results/spike_$(date +"%Y%m%d_%H%M%S").json" \
             --env TEST_TYPE=spike \
             realistic-load-test.js
@@ -110,7 +114,7 @@ run_soak_test() {
     read -p "This test will run for ~40 minutes. Continue? (y/N): " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        k6 run \
+        $K6_CMD run \
             --out json="results/soak_$(date +"%Y%m%d_%H%M%S").json" \
             --env TEST_TYPE=soak \
             realistic-load-test.js

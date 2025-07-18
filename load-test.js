@@ -58,9 +58,13 @@ function submitForm(url, formData, headers = {}) {
     'Accept-Encoding': 'gzip, deflate, br',
     'DNT': '1',
     'Connection': 'keep-alive',
-    'Upgrade-Insecure-Requests': '1',
-    ...headers
+    'Upgrade-Insecure-Requests': '1'
   };
+
+  // Merge headers manually
+  for (let key in headers) {
+    defaultHeaders[key] = headers[key];
+  }
 
   return http.post(url, formData, { headers: defaultHeaders });
 }

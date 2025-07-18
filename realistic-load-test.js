@@ -57,9 +57,12 @@ class UserSession {
         this.cookies[name] = value;
       });
       
-      this.headers['Cookie'] = Object.entries(this.cookies)
-        .map(([name, value]) => `${name}=${value}`)
-        .join('; ');
+      let cookieStr = '';
+      for (let name in this.cookies) {
+        if (cookieStr) cookieStr += '; ';
+        cookieStr += name + '=' + this.cookies[name];
+      }
+      this.headers['Cookie'] = cookieStr;
     }
   }
 
